@@ -1,11 +1,16 @@
-import { Todo, TodoState } from '../interfaces/interfaces';
+import { TodoState } from '../interfaces/interfaces';
 
 type TodoAction =
-  | { type: 'addTodo', payload: Todo }
+  | { type: 'addTodo', payload: {
+    id: string
+    desc: string
+    completed: boolean
+  } }
   | { type: 'toggleTodo', payload: {id: string} }
+  | { type: 'setTodoCount' }
 
 export const todoReducer = ( state: TodoState, action: TodoAction ): TodoState => {
-  
+
   switch ( action.type ) {
 
     case 'addTodo':
@@ -14,13 +19,20 @@ export const todoReducer = ( state: TodoState, action: TodoAction ): TodoState =
         todos: [ ...state.todos, action.payload ],
       };
 
+    case 'setTodoCount':
+      return {
+        ...state,
+        todoCount: state.todos.length,
+        
+      };
+
     case 'toggleTodo':
       return {
         ...state,
         todos: state.todos.map( ( { ...todo } ) => {
           if ( todo.id === action.payload.id ) {
             todo.completed = !todo.completed;
-            
+
             if ( todo.completed ) {
               state.completed++;
               state.pending--;

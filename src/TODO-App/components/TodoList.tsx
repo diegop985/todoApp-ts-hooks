@@ -5,7 +5,7 @@ import { TodoItem } from './TodoItem';
 
 export const TodoList = () => {
 
-  const { todos, completedTodos, pendingTodos } = useTodos(); 
+  const { todos, completedTodos, pendingTodos, todoCount } = useTodos(); 
 
   return (
     <div>
@@ -18,6 +18,7 @@ export const TodoList = () => {
 
       <p>Completed: { completedTodos }</p>
       <p>Pending: { pendingTodos }</p>
+      <p>Total: { todoCount }</p>
       
     </div>
   );
