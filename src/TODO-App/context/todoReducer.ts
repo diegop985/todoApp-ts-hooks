@@ -20,9 +20,18 @@ export const todoReducer = ( state: TodoState, action: TodoAction ): TodoState =
         todos: state.todos.map( ( { ...todo } ) => {
           if ( todo.id === action.payload.id ) {
             todo.completed = !todo.completed;
+            
+            if ( todo.completed ) {
+              state.completed++;
+              state.pending--;
+            } else {
+              state.pending++;
+              state.completed--;
+            }
           }
           return todo;
         } ),
+        
       };
 
     default:

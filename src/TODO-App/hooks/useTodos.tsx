@@ -4,12 +4,14 @@ import { TodoContext } from '../context/TodoContext';
 export const useTodos = () => {
 
   const { todoState, toggleTodo } = useContext( TodoContext );
-  const { todos } = todoState;
+  const { todos, completed, pending } = todoState;
+
+  console.log( completed + ' ' + pending );
 
   return {
     todos: todos, 
-    completedTodos: todos.filter( todo=> todo.completed ).length,
-    pendingTodos: todos.filter( todo=> !todo.completed ).length,
+    completedTodos: completed,
+    pendingTodos: pending,
     toggleTodo,
   };
 };

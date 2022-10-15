@@ -28,7 +28,7 @@ const INITIAL_STATE: TodoState = {
     },
   ],
   completed: 0,
-  pending: 0,
+  pending: 4,
 };
 
 interface TodoProvideProps {

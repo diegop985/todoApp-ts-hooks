@@ -5,7 +5,7 @@ import { TodoItem } from './TodoItem';
 
 export const TodoList = () => {
 
-  const { todos } = useTodos(); 
+  const { todos, completedTodos, pendingTodos } = useTodos(); 
 
   return (
     <div>
@@ -15,6 +15,9 @@ export const TodoList = () => {
           todos.map( todo => <TodoItem key={ todo.id } todo={ todo } /> )
         }
       </ul>
+
+      <p>Completed: { completedTodos }</p>
+      <p>Pending: { pendingTodos }</p>
       
     </div>
   );
