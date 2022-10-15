@@ -23,7 +23,7 @@ export const todoReducer = ( state: TodoState, action: TodoAction ): TodoState =
       return {
         ...state,
         todoCount: state.todos.length,
-        
+        pending: state.todos.length- state.completed,
       };
 
     case 'toggleTodo':
